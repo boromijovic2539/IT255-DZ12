@@ -1,0 +1,32 @@
+<form class="navbar-form" role="search">
+	<h3>Pretrazi sobe:</h3>
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Pretraži po broju kreveta" [(ngModel)]="beds">
+    </div>
+</form>
+
+
+<form class="navbar-form" role="search">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Pretraži po kvadraturi" [(ngModel)]="kvadratura">
+    </div>
+</form>
+
+<div class="col-lg-12">
+    <br/><h3>Sobe</h3>
+    <div class= "sobe" *ngFor="#soba of rooms| SearchPipe: beds | SearchPipeKV: kvadratura" >
+        <strong>Room name:</strong> {{soba.roomname}}
+        <span *ngIf="soba.tv == 'yes'">
+        This room<strong> has</strong> a TV.
+        </span>
+        <span *ngIf="soba.tv == 'no'">
+        This room <strong>doesnt</strong> have a TV.
+        </span>
+		 <br/>
+        <strong>Beds:</strong> {{soba.beds}}
+        <br/>
+        <strong>Kvadratura:</strong> {{soba.kvadratura}}
+		<br/>
+		<br/>
+</div>
+</div>
