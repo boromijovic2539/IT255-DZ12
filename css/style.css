@@ -36,6 +36,10 @@ a:hover {
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
 }
 
+.form p{
+	padding-right: 10px;
+}
+
 .tab-group {
   list-style: none;
   padding: 0;
@@ -77,6 +81,10 @@ a:hover {
 	
 	
 	color: white;
+}
+
+p{
+	color: #A9A9A9;
 }
 
 h1 {
@@ -145,6 +153,7 @@ textarea {
   position: relative;
   margin-bottom: 40px;
 }
+
 
 .top-row:after {
   content: "";

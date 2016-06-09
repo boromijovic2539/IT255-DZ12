@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/http', 'rxjs/Rx',
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, common_1, http_1, router_1;
-    var RegisterComponent;
+    var AddRoomComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -28,54 +28,46 @@ System.register(['angular2/core', 'angular2/common', 'angular2/http', 'rxjs/Rx',
                 router_1 = router_1_1;
             }],
         execute: function() {
-            RegisterComponent = (function () {
-                function RegisterComponent(builder, http, router) {
+            AddRoomComponent = (function () {
+                function AddRoomComponent(builder, http, router) {
                     this.http = http;
                     this.router = router;
                     this.registerForm = builder.group({
-                        email: ["", common_1.Validators.none],
-                        password: ["", common_1.Validators.none],
-                        firstName: ["", common_1.Validators.none],
-                        lastName: ["", common_1.Validators.none],
+                        newRoomName: ["", common_1.Validators.none],
+                        tv: ["", common_1.Validators.none],
+                        beds: ["", common_1.Validators.none],
+                        kvadratura: ["", common_1.Validators.none]
                     });
-                    if (localStorage.getItem('token') != null) {
-                        this.router.parent.navigate(['./Home']);
-                    }
                 }
-                RegisterComponent.prototype.onRegister = function () {
+                AddRoomComponent.prototype.onAddRoom = function () {
                     var _this = this;
-                    var data = "email=" + this.registerForm.value.email + "&password=" + this.registerForm.value.password + "&firstName=" + this.registerForm.value.firstName + "&lastName=" + this.registerForm.value.lastName;
+                    var data = "newRoomName=" + this.registerForm.value.newRoomName + "&tv=" + this.registerForm.value.tv + "&beds=" + this.registerForm.value.beds + "&kvadratura=" + this.registerForm.value.kvadratura;
                     var headers = new http_1.Headers();
                     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-                    this.http.post('http://localhost/php/registerservice.php', data, { headers: headers })
+                    this.http.post('http://localhost/php/addroomservice.php', data, { headers: headers })
                         .map(function (res) { return res; })
                         .subscribe(function (data) { return _this.postResponse = data; }, function (err) { return alert(JSON.stringify(err)); }, function () {
                         if (_this.postResponse._body.indexOf("error") === -1) {
-                            var obj = JSON.parse(_this.postResponse._body);
-                            localStorage.setItem('token', obj.token);
+                            alert("Uspesno dodavanje sobe");
                             _this.router.parent.navigate(['./Home']);
                         }
                         else {
-                            var obj = JSON.parse(_this.postResponse._body);
-                            document.getElementsByClassName("alert")[0].style.display = "block";
-                            document.getElementsByClassName("alert")[0].innerHTML = obj.error.split("\\r\\n").join("<br/>").split("\"").join("");
+                            alert("Neuspesno dodavanje sobe");
                         }
                     });
                 };
-                RegisterComponent = __decorate([
+                AddRoomComponent = __decorate([
                     core_1.Component({
-                        selector: 'Register',
-                        templateUrl: 'app/register/register.html',
-                        styleUrls: ['css/style.css'],
-                        directives: [common_1.FORM_DIRECTIVES],
-                        viewBindings: [common_1.FORM_BINDINGS]
+                        selector: 'AddRoom',
+                        templateUrl: 'app/addroom/addroom.html',
+                        styleUrls: ['css/style.css']
                     }), 
                     __metadata('design:paramtypes', [common_1.FormBuilder, http_1.Http, router_1.Router])
-                ], RegisterComponent);
-                return RegisterComponent;
+                ], AddRoomComponent);
+                return AddRoomComponent;
             }());
-            exports_1("RegisterComponent", RegisterComponent);
+            exports_1("AddRoomComponent", AddRoomComponent);
         }
     }
 });
-//# sourceMappingURL=register.component.js.map
+//# sourceMappingURL=addroom.component.js.map

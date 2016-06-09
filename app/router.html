@@ -2,10 +2,12 @@
 <h2>Hotel M</h2>
 
 <ul>
-   <li><a [routerLink]="['./Home']">Home</a></li>
-   <li><a [routerLink]="['./Login']">Login</a></li>
-   <li><a [routerLink]="['./Register']">Register</a></li>
+   <li [class.active]="router.isRouteActive(router.generate(['/Home']))"><a [routerLink]="['./Home']">Home</a></li>
+   <li *ngIf="isAuth == 'no'" [class.active]="router.isRouteActive(router.generate(['/Login']))"><a [routerLink]="['./Login']">Login</a></li>
+   <li *ngIf="isAuth == 'no'" [class.active]="router.isRouteActive(router.generate(['/Register']))"><a [routerLink]="['./Register']">Register</a></li>
    <li><a [routerLink]="['./FindRoom']">FindRoom</a></li>
+   <li  *ngIf="isAuth == 'yes'"><a [routerLink]="['./AddRoom']">AddRoom</a></li>
+   <li  *ngIf="isAuth == 'yes'"><a (click)="onLogout()">Logout</a></li>
 </ul>
 </div>		
 <div class="form">			
