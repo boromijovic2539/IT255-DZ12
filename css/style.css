@@ -78,11 +78,31 @@ a:hover {
 }
 
 .col-lg-12{
-	
-	
-	color: white;
+	color: rgba(19, 35, 47, 0.9);
 }
+td{
+	 text-align: center;
+}
+.btn-delete {
+  background: #f70814;
+  background-image: -webkit-linear-gradient(top, #f70814, #b82b2b);
+  background-image: -moz-linear-gradient(top, #f70814, #b82b2b);
+  background-image: -ms-linear-gradient(top, #f70814, #b82b2b);
+  background-image: -o-linear-gradient(top, #f70814, #b82b2b);
+  background-image: linear-gradient(to bottom, #f70814, #b82b2b);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: White;
+  font-size: 23px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
 
+}
+.btn-delete:focus{
+	outline:0;
+}
 p{
 	color: #A9A9A9;
 }
@@ -92,6 +112,20 @@ h1 {
   color: #ffffff;
   font-weight: 300;
   margin: 0 0 40px;
+}
+h3{
+  color: white;
+}
+
+th.sorting{
+  color: white;
+}
+
+th.sorting_asc{
+  color: white;
+}
+th.sorting_desc{
+  color: white;
 }
 
 label {

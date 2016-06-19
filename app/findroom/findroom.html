@@ -12,19 +12,31 @@
 
 <div class="col-lg-12">
     <br/><h3>Sobe</h3>
-    <div class= "sobe" *ngFor="#soba of rooms| SearchPipe: beds | SearchPipeKV: kvadratura" >
-        <strong>Room name:</strong> {{soba.roomname}}
-        <span *ngIf="soba.tv == 'yes'">
-        This room<strong> has</strong> a TV.
+	<table id="example" class="display" cellspacing="0">
+	
+	<thead>
+		<tr>
+			<th>Ime sobe: </th>
+			<th>Beds: </th>
+			<th>TV: </th>
+			<th>Kvadratura: </th>
+		</tr>
+		</thead>
+
+		<tbody>
+   <tr *ngFor="#soba of rooms| SearchPipe: beds | SearchPipeKV: kvadratura" >
+
+        <th>{{soba.roomname}}</th>
+		<th>{{soba.beds}}</th>
+       <th><span *ngIf="soba.tv == '1'">
+			Ima
         </span>
-        <span *ngIf="soba.tv == 'no'">
-        This room <strong>doesnt</strong> have a TV.
+        <span *ngIf="soba.tv != '1'">
+			Nema
         </span>
-		 <br/>
-        <strong>Beds:</strong> {{soba.beds}}
-        <br/>
-        <strong>Kvadratura:</strong> {{soba.kvadratura}}
-		<br/>
-		<br/>
-</div>
+		</th>
+		<th>{{soba.kvadratura}}</th>
+	</tr>
+		</tbody>
+	</table>
 </div>
